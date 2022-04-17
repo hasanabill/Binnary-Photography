@@ -1,0 +1,32 @@
+[
+    {
+        "id": "625c2301557c215420e6e8a5",
+        "title": "Portrait",
+        "price": "200",
+        "time": "2",
+        "image": "10",
+        "outfit": "2",
+        "edit": "2",
+        "serve": "Hi-res images on cd"
+    },
+    {
+        "id": "625c2301edf992001470d47e",
+        "title": "Group Shots",
+        "price": "400",
+        "time": "4",
+        "image": "50",
+        "outfit": "4",
+        "edit": "10",
+        "serve": "Hi-res images on cd"
+    },
+    {
+        "id": "625c23013269903aab5be324",
+        "title": "Wedding",
+        "price": "800",
+        "time": "8",
+        "image": "100",
+        "outfit": "5",
+        "edit": "20",
+        "serve": "Hi-res images on cd"
+    }
+]

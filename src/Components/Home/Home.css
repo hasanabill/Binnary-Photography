@@ -3,16 +3,8 @@
     height: 100%;
 }
 
-.bcd {
-    position: relative;
-}
-
 .abc {
-    position: absolute;
     z-index: 2;
-    top: 50%;
-    left: 32%;
-
 }
 
 .abc p {

@@ -6,7 +6,8 @@ import Blogs from './Components/Blogs/Blogs';
 import Login from './Components/Login/Login/Login';
 import Register from './Components/Login/Register/Register';
 import About from './Components/About/About';
-import Gallary from './Components/Gallary/Gallary/Gallary';
+import Gallary from './Components/Gallary/Gallary';
+import Footer from './Components/Shared/Footer/Footer';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route></Route>
         <Route></Route>
       </Routes>
+      <Footer></Footer>
     </div>
   );
 }
