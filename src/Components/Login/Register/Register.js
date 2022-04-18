@@ -45,10 +45,8 @@ const Register = () => {
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({ displayName: name });
         if (email) {
-
             toast('Varification Email Sent')
         }
-
     }
 
     return (
