@@ -11,16 +11,19 @@ const SocialLogin = () => {
     const [signInWithGoogle, gUser, gLoading, error] = useSignInWithGoogle(auth);
     const [signInWithFacebook, fbUser, fbLoading] = useSignInWithFacebook(auth);
 
-
+    // private route redirect handleing
     let from = location.state?.from?.pathname || "/";
     if (gUser || fbUser) {
         navigate(from, { replace: true });
     }
 
+    // error handling
     let errorElement;
     if (error) {
         errorElement = <p>{error.message}</p>
     }
+
+    // loading time spinner handling
     let loadElement;
     if (gLoading || fbLoading) {
         loadElement = <Loading></Loading>
@@ -28,7 +31,6 @@ const SocialLogin = () => {
 
     return (
         <div className='w-50 mx-auto'>
-
             <div className='d-flex align-items-center '>
                 <div style={{ height: "1px" }} className='bg-dark w-50'></div>
                 <p className='mt-2 px-2'>or</p>

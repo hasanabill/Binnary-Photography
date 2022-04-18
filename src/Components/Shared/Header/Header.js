@@ -29,6 +29,8 @@ const Header = () => {
                         </Nav>
                         <Nav>
                             <Nav.Link className='text-white'>{user?.displayName}</Nav.Link>
+
+                            {/* conditonally rendering user state if logged in or not */}
                             {
                                 user ?
                                     <Nav.Link onClick={handleSignOut}>Sign Out</Nav.Link>

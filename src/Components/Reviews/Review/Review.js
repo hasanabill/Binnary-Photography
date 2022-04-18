@@ -3,6 +3,7 @@ import './Review.css'
 
 const Review = ({ review }) => {
 
+    // destructring props
     const { img, name, comment } = review;
 
     return (

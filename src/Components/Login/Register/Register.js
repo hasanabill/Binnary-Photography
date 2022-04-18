@@ -26,16 +26,19 @@ const Register = () => {
 
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
+    // error handling
     let errorElement;
     if (error) {
         errorElement = <>{error?.message}</>
     }
 
+    // private route redirect handleing
     let from = location.state?.from?.pathname || "/";
     if (user) {
         navigate(from, { replace: true });
     }
 
+    // register new user handle
     const handleRegister = async (event) => {
         event.preventDefault();
         const name = nameRef.current.value;

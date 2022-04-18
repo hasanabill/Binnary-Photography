@@ -24,20 +24,24 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
+    // private route redirect handleing
     let from = location.state?.from?.pathname || "/";
     if (user) {
         navigate(from, { replace: true });
     }
 
+    // during loading time
     if (loading || sending) {
         return <Loading></Loading>
     }
 
+    // error handling
     let errorElement;
     if (error) {
         errorElement = <>{error.message}</>
     }
 
+    // login handling
     const handleLogin = (event) => {
         event.preventDefault();
         const email = emailRef.current.value;
@@ -45,6 +49,7 @@ const Login = () => {
         signInWithEmailAndPassword(email, password);
     }
 
+    // password reset handling
     const resetPassword = async () => {
         const email = emailRef.current.value;
         if (email) {
