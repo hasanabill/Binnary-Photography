@@ -3,6 +3,7 @@ import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import Loading from '../../Login/Loading/Loading';
 import auth from './../../../firebase.init';
 
 const Header = () => {
@@ -27,7 +28,7 @@ const Header = () => {
                             <Nav.Link as={Link} to="/about">About</Nav.Link>
                         </Nav>
                         <Nav>
-                            <h4 className=' pt-1 text-white'>{user?.displayName}</h4>
+                            <Nav.Link className='text-white'>{user?.displayName}</Nav.Link>
                             {
                                 user ?
                                     <Nav.Link onClick={handleSignOut}>Sign Out</Nav.Link>

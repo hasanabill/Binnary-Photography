@@ -1,9 +1,12 @@
 import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import auth from './../../../firebase.init';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Loading from './../Loading/Loading';
 
 const Login = () => {
 
@@ -11,6 +14,8 @@ const Login = () => {
     const passwordRef = useRef('')
     const navigate = useNavigate();
     const location = useLocation();
+
+    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
 
     const [
         signInWithEmailAndPassword,
@@ -24,6 +29,10 @@ const Login = () => {
         navigate(from, { replace: true });
     }
 
+    if (loading || sending) {
+        return <Loading></Loading>
+    }
+
     let errorElement;
     if (error) {
         errorElement = <>{error.message}</>
@@ -35,6 +44,17 @@ const Login = () => {
         const password = passwordRef.current.value;
         signInWithEmailAndPassword(email, password);
     }
+
+    const resetPassword = async () => {
+        const email = emailRef.current.value;
+        if (email) {
+            await sendPasswordResetEmail(email);
+            toast('Check Your Email Inbox')
+        }
+        else {
+            toast('Enter Valid Email Address')
+        }
+    };
 
     return (
         <div>
@@ -50,6 +70,7 @@ const Login = () => {
                 </Form.Group>
 
                 <p>New here? <Link className='text-decoration-none' to='/register'>Create New Account</Link></p>
+                <p>Forgot Password? <button className='btn btn-link text-primary text-decoration-none' onClick={resetPassword}>Reset Password</button></p>
                 <p className='text-center text-danger'>{errorElement}</p>
 
                 <Button onClick={handleLogin} className='w-50 d-block mx-auto' variant="dark" type="submit">
@@ -57,6 +78,7 @@ const Login = () => {
                 </Button>
             </Form>
             <SocialLogin></SocialLogin>
+            <ToastContainer></ToastContainer>
         </div>
     );
 };

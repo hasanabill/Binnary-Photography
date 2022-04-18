@@ -3,8 +3,8 @@ import { Spinner } from 'react-bootstrap';
 
 const Loading = () => {
     return (
-        <div className='w-100 d-flex justify-content-center align-items-center'>
-            <Spinner animation="border" variant="primary" />
+        <div className='w-100 my-3 d-flex justify-content-center align-items-center'>
+            <Spinner animation="border" variant="dark" />
         </div>
     );
 };

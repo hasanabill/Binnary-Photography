@@ -1,9 +1,11 @@
 import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import auth from './../../../firebase.init';
+import Loading from './../Loading/Loading';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Register = () => {
 
@@ -11,25 +13,42 @@ const Register = () => {
     const emailRef = useRef('')
     const passwordRef = useRef('')
 
+    const navigate = useNavigate();
+    const location = useLocation();
+
+
     const [
         createUserWithEmailAndPassword,
         user,
         loading,
         error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
     let errorElement;
     if (error) {
         errorElement = <>{error.message}</>
     }
 
+    let from = location.state?.from?.pathname || "/";
+    if (user) {
+        navigate(from, { replace: true });
+    }
 
     const handleRegister = async (event) => {
         event.preventDefault();
+        const name = nameRef.current.value;
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        console.log(email, password)
-        createUserWithEmailAndPassword(email, password)
+
+        await createUserWithEmailAndPassword(email, password);
+        await updateProfile({ displayName: name });
+        if (email) {
+
+            toast('Varification Email Sent')
+        }
+
     }
 
     return (
@@ -52,12 +71,14 @@ const Register = () => {
 
                 <p>Already have an account? <Link className='text-decoration-none' to='/login'>Please Login</Link></p>
                 <p className='text-center text-danger'>{errorElement}</p>
+                <>{loading && <Loading></Loading>}</>
 
                 <Button onClick={handleRegister} className='w-50 d-block mx-auto' variant="dark" type="submit">
                     Register
                 </Button>
             </Form>
             <SocialLogin></SocialLogin>
+            <ToastContainer></ToastContainer>
         </div>
     );
 };

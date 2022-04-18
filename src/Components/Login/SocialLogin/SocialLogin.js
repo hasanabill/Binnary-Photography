@@ -2,17 +2,18 @@ import React from 'react';
 import auth from './../../../firebase.init';
 import { useSignInWithFacebook, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
+import Loading from '../Loading/Loading';
 
 const SocialLogin = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-    const [signInWithFacebook] = useSignInWithFacebook(auth);
+    const [signInWithGoogle, gUser, gLoading, error] = useSignInWithGoogle(auth);
+    const [signInWithFacebook, fbUser, fbLoading] = useSignInWithFacebook(auth);
 
 
     let from = location.state?.from?.pathname || "/";
-    if (user) {
+    if (gUser || fbUser) {
         navigate(from, { replace: true });
     }
 
@@ -20,9 +21,14 @@ const SocialLogin = () => {
     if (error) {
         errorElement = <p>{error.message}</p>
     }
+    let loadElement;
+    if (gLoading || fbLoading) {
+        loadElement = <Loading></Loading>
+    }
 
     return (
         <div className='w-50 mx-auto'>
+
             <div className='d-flex align-items-center '>
                 <div style={{ height: "1px" }} className='bg-dark w-50'></div>
                 <p className='mt-2 px-2'>or</p>
@@ -38,6 +44,7 @@ const SocialLogin = () => {
                     FaceBook Sign In
                 </button>
             </div>
+            {loadElement}
             <p className='text-center text-danger'>{errorElement}</p>
         </div>
     );
