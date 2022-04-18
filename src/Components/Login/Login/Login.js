@@ -1,25 +1,51 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import auth from './../../../firebase.init';
 
 const Login = () => {
+
+    const emailRef = useRef('')
+    const passwordRef = useRef('')
+
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+
+    let errorElement;
+    if (error) {
+        errorElement = <>{error.message}</>
+    }
+
+    const handleLogin = (event) => {
+        event.preventDefault();
+        const email = emailRef.current.value;
+        const password = passwordRef.current.value;
+        signInWithEmailAndPassword(email, password);
+    }
+
     return (
         <div>
             <Form className='w-50 mx-auto mt-5'>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
+                    <Form.Control ref={emailRef} type="email" placeholder="Enter email" required />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
+                    <Form.Control ref={passwordRef} type="password" placeholder="Password" required />
                 </Form.Group>
 
                 <p>New here? <Link className='text-decoration-none' to='/register'>Create New Account</Link></p>
+                <p className='text-center text-danger'>{errorElement}</p>
 
-                <Button className='w-50 d-block mx-auto' variant="dark" type="submit">
+                <Button onClick={handleLogin} className='w-50 d-block mx-auto' variant="dark" type="submit">
                     Login
                 </Button>
             </Form>
