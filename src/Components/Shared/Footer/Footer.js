@@ -1,5 +1,6 @@
 import React from 'react';
 import { SocialMediaIconsReact } from 'social-media-icons-react';
+import './Footer.css'
 
 const Footer = () => {
 
@@ -7,7 +8,7 @@ const Footer = () => {
     const year = today.getFullYear();
 
     return (
-        <div className='bg-dark py-3 mt-5'>
+        <div className='bg-dark py-4 mt-5 footer'>
             <div className='d-flex justify-content-center mb-4'>
                 <div className=' px-2'>
                     <SocialMediaIconsReact borderColor="rgba(0,0,0,0.25)" borderWidth="0" borderStyle="inset" icon="facebook" iconColor="rgba(255,255,255,1)" backgroundColor="rgba(26,166,233,1)" iconSize="3" roundness="50%" url="https://www.facebook.com" size="40" />

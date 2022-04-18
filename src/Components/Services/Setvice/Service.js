@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import './Service.css'
 
 const Service = ({ service }) => {
 
@@ -12,8 +13,8 @@ const Service = ({ service }) => {
     }
 
     return (
-        <div className='mx-5'>
-            <Card style={{ width: '18rem' }}>
+        <div className='col-12 col-md-4 my-3'>
+            <Card className='card'>
                 <Card.Body>
                     <Card.Title> <h1>{title}</h1> </Card.Title>
                     <Card.Text>

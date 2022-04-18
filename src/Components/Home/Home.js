@@ -16,7 +16,7 @@ const Home = () => {
                 <div className='position-absolute top-50 start-50 translate-middle abc'>
                     <p className='text-white'>I am Omuk. I am a photographer <br /> I capture life.</p>
 
-                    <Link className='text-decoration-none border text-white rounded  py-2 px-3' to='/gallary'>Discover</Link>
+                    <Link className='text-decoration-none border text-white rounded btn-discover' to='/gallary'>Discover</Link>
                 </div>
                 <Carousel interval='2000' fade>
                     <Carousel.Item>

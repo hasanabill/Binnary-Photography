@@ -10,3 +10,19 @@
 .abc p {
     font-size: 30px;
 }
+
+.btn-discover {
+    font-size: 20px;
+    padding: 8px 15px;
+}
+
+@media screen and (max-width:576px) {
+    .abc p {
+        font-size: 12px;
+    }
+
+    .btn-discover {
+        font-size: 10px;
+        padding: 5px 8px;
+    }
+}

@@ -30,7 +30,7 @@ const Reviews = () => {
     return (
         <div className='container my-5'>
             <h1 className='text-center my-3'>Reviews</h1>
-            <div className='d-flex justify-content-center'>
+            <div className='row '>
                 {
                     reviews.map(review => <Review
                         key={review.id}
