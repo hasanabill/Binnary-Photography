@@ -8,6 +8,7 @@ import Register from './Components/Login/Register/Register';
 import About from './Components/About/About';
 import Gallary from './Components/Gallary/Gallary';
 import Footer from './Components/Shared/Footer/Footer';
+import NotFound from './Components/Shared/NotFound/NotFound';
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
         <Route path='/about' element={<About></About>}></Route>
         <Route path='/gallary' element={<Gallary></Gallary>}></Route>
         <Route></Route>
-        <Route></Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
     </div>

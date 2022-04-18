@@ -1,9 +1,15 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 const Service = ({ service }) => {
 
     const { title, price, time, image, outfit, edit, serve } = service;
+    const navigate = useNavigate();
+
+    const handleBook = () => {
+        navigate('/book')
+    }
 
     return (
         <div className='mx-5'>
@@ -18,7 +24,7 @@ const Service = ({ service }) => {
                         <>{serve}</> <br />
                     </Card.Text>
                     <Card.Title>   <h2 className='d-block mb-3'>${price}</h2></Card.Title>
-                    <Button variant="dark">Book Now</Button>
+                    <Button onClick={handleBook} variant="dark">Book Now</Button>
                 </Card.Body>
             </Card>
         </div>

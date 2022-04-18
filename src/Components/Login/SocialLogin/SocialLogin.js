@@ -1,6 +1,11 @@
 import React from 'react';
+import auth from './../../../firebase.init';
 
 const SocialLogin = () => {
+
+    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+
+
     return (
         <div className='w-50 mx-auto'>
             <div className='d-flex align-items-center '>
