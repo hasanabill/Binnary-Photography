@@ -14,7 +14,7 @@ const Home = () => {
         <div>
             <div className='position-relative'>
                 <div className='position-absolute top-50 start-50 translate-middle abc'>
-                    <p className='text-white'>I am Omuk. I am a photographer <br /> I capture life.</p>
+                    <p className='text-white'>I am Anabil. I am a photographer <br /> I capture Moments.</p>
 
                     <Link className='text-decoration-none border text-white rounded btn-discover' to='/gallary'>Discover</Link>
                 </div>

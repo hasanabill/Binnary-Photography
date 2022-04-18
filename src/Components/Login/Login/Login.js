@@ -63,7 +63,7 @@ const Login = () => {
 
     return (
         <div style={{ height: '600px' }}>
-            <Form className='w-50 mx-auto mt-5'>
+            <Form onSubmit={handleLogin} className='w-50 mx-auto mt-5'>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control ref={emailRef} type="email" placeholder="Enter email" required />
@@ -78,7 +78,7 @@ const Login = () => {
                 <p>Forgot Password? <button className='btn btn-link text-primary text-decoration-none' onClick={resetPassword}>Reset Password</button></p>
                 <p className='text-center text-danger'>{errorElement}</p>
 
-                <Button onClick={handleLogin} className='w-50 d-block mx-auto' variant="dark" type="submit">
+                <Button className='w-50 d-block mx-auto' variant="dark" type="submit">
                     Login
                 </Button>
             </Form>

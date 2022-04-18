@@ -54,7 +54,7 @@ const Register = () => {
 
     return (
         <div className='mt-5' style={{ height: '600px' }}>
-            <Form className='w-50 mx-auto'>
+            <Form onSubmit={handleRegister} className='w-50 mx-auto'>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Your Name</Form.Label>
                     <Form.Control ref={nameRef} type="text" placeholder="Enter Your Name" />
@@ -74,7 +74,7 @@ const Register = () => {
                 <p className='text-center text-danger'>{errorElement}</p>
                 <>{loading && <Loading></Loading>}</>
 
-                <Button onClick={handleRegister} className='w-50 d-block mx-auto' variant="dark" type="submit">
+                <Button className='w-50 d-block mx-auto' variant="dark" type="submit">
                     Register
                 </Button>
             </Form>
