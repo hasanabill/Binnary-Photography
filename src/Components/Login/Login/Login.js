@@ -57,7 +57,7 @@ const Login = () => {
     };
 
     return (
-        <div>
+        <div style={{ height: '600px' }}>
             <Form className='w-50 mx-auto mt-5'>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>

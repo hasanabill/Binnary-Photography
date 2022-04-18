@@ -1,3 +1,23 @@
+# Binnary Photography
+## Check out the live site [here](https://binnary-photography.web.app/)
+
+### features
+* Carousel in homepage
+* Single Page Application
+* Google Sign In
+* Facebook Sign In
+* Email Varification
+* Password Reset
+
+### Tools used
+* React JS
+* React Router
+* Firebase Authentication
+* React Bootstrap
+* React Photo Album
+* React Social Media Icon
+* React Firebase Hook
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

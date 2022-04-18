@@ -28,7 +28,7 @@ const Register = () => {
 
     let errorElement;
     if (error) {
-        errorElement = <>{error.message}</>
+        errorElement = <>{error?.message}</>
     }
 
     let from = location.state?.from?.pathname || "/";
@@ -50,7 +50,7 @@ const Register = () => {
     }
 
     return (
-        <div className='mt-5'>
+        <div className='mt-5' style={{ height: '600px' }}>
             <Form className='w-50 mx-auto'>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Your Name</Form.Label>
